@@ -14,13 +14,11 @@ const NewProduct = ({className } : {className? : string }) => {
         width={172}
         height={207}
       />
-      <Circle size={279}  className="absolute top-[7%] left-[7%] opacity-25" />
-      <Circle size={320}  className="absolute top-0 opacity-25" />
 
       </div>
       <div className="flex flex-col gap-8 pb-14">
-        <h2 className="text-4xl font-bold max-w-min  mx-auto text-center uppercase ">ZSX Speaker</h2>
-        <p className="text-[15px] uppercase text-white/75 text-center leading-6">
+        <h2 className="text-4xl sm:text-[58px] leading-[56px] font-bold max-w-min  mx-auto text-center uppercase ">ZSX Speaker</h2>
+        <p className="text-[15px] text-white/75 text-center leading-6 mx-auto sm:max-w-[350px] ">
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
@@ -35,14 +33,4 @@ const NewProduct = ({className } : {className? : string }) => {
 export default NewProduct;
 
 
-
-const Circle = ({ size, borderColor = '#fff', className, ...props }: { size: number, borderColor?: string, className?: string }) => {
-  return (
-    <div className={`bg-transparent  border-[1px] rounded-full  ${className}`}
-    style={{ width: size+"px", height: size+"px" , borderColor: borderColor}}
-      {...props}
-    >
-    </div>
-  )
-}
 
