@@ -17,3 +17,78 @@
     background: url(/home/desktop/image-speaker-zx7.jpg) lightgray 0px 0px / 100% 100% no-repeat;
   }
 }
+
+.bg_hero {
+    background: url(/home/mobile/image-header.jpg) white 0px 0px / 100% 100% no-repeat;
+    background-position-y: -90px;
+}
+
+
+#cat1::before {
+  content: '';
+  width: 80px;
+  height: 104px;
+  background: url(/home/hphones_cat.png)  0px 0px / 100% 100% no-repeat;
+  display: block;
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#cat2::before {
+  content: '';
+  width: 84px;
+  height: 101px;
+  background: url(/home/sp_cat.png)  0px 0px / 100% 100% no-repeat;
+  display: block;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#cat3::before {
+  content: '';
+  width: 147px;
+  height: 133px;
+  background: url(/home/earphones_cat2.png)  0px 0px / 100% 100% no-repeat;
+  display: block;
+  position: absolute;
+  top: -73.5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* background: "url(/home/hphones_cat.png)  0px 0px / 100% 100% no-repeat" */
+@media (min-width: 768px) {
+  .bg_hero {
+    background: url(/home/tablet/image-header.jpg) white 0px 0px / 100% 100% no-repeat;
+    background-position-y: -90px;
+
+  }
+}
+@media (min-width: 1220px) {
+  .bg_hero {
+    background: url(/home/desktop/image-hero.jpg) white 0px 0px / 100% 100% no-repeat;
+    background-position-y: -90px;
+
+  }
+  #cat1::before {
+    width: 123px;
+    height: 160px;
+    top : -80px;
+  }
+
+  #cat2::before {
+    width: 121px;
+    height: 146px;
+    top : -73px;
+  }
+  #cat3::before {
+    width: 178px;
+    height: 161px;
+    top : -81px;
+  }
+}

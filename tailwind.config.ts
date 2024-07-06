@@ -9,6 +9,28 @@ const config: Config = {
   ],
 
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1220px",
+    },
+    container: {
+      center: true,
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+      },
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "2rem",
+        md:"2.5rem",
+        lg: "5.3125rem",
+
+      }
+    },
     extend: {
       colors: {
         'primary': "#D87D4A",

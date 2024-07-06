@@ -1,17 +1,48 @@
+"use client";
+import Link from "next/link";
 import Logo from "./Logo";
+import { usePathname } from "next/navigation";
+import { ComponentProps } from "react";
+import { cn } from "@/utils/lib";
 export default function Nav() {
   return (
-    <nav className="bg-[#191919] px-6 h-[89px] flex justify-between items-center">
-      <HumburgerIcon />
+    <nav className="bg-[#191919] h-[89px]">
+      <div className= "container h-full flex justify-between items-center gap-11 md:justify-normal">
+      <HumburgerIcon className="lg:hidden" />
       <Logo/>
-      <PanierIcon />
+      <div className="hidden lg:flex items-center gap-[34px] ml-auto ">
+        <NavLink href={""}>Home</NavLink >
+        <NavLink href={""}>Headphones</NavLink >
+        <NavLink href={""}>Speakers</NavLink >
+        <NavLink href={""}>Earphones</NavLink >
+      </div>
+      <PanierIcon className="md:ml-auto" />
+
+      </div>
+      <svg className="mx-auto" width="1110" height="1" viewBox="0 0 1110 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.2" width="1110" height="1" fill="white"/>
+</svg>
+
     </nav>
   );
 }
 
+export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
+  const pathname = usePathname()
+  return (
+    <Link
+      {...props}
+      className={cn(
+        "text-[13px] font-bold uppercase text-white hover:text-primary duration-300",
+        pathname === props.href && "text-primary"
+      )}
+    />
+  )
+}
 
 
-const HumburgerIcon = () => {
+
+const HumburgerIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,6 +50,7 @@ const HumburgerIcon = () => {
       height="15"
       viewBox="0 0 16 15"
       fill="none"
+      className={className}
     >
       <rect width="16" height="3" fill="white" />
       <rect y="6" width="16" height="3" fill="white" />
@@ -29,7 +61,7 @@ const HumburgerIcon = () => {
 
 
 
-const PanierIcon = () => {
+const PanierIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +69,7 @@ const PanierIcon = () => {
       height="20"
       viewBox="0 0 23 20"
       fill="none"
+      className={className}
     >
       <path
         fill-rule="evenodd"

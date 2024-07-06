@@ -1,6 +1,6 @@
 import React from "react";
 
- const Logo = () => {
+ const Logo = ({className}: {className?: string}) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ import React from "react";
         height="25"
         viewBox="0 0 143 25"
         fill="none"
+        className={className}
       >
         <path
           fill-rule="evenodd"

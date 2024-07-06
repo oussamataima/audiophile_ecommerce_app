@@ -10,15 +10,15 @@ export const Button = <
 }: {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "black" | "outline";
+  variant?: "primary" |  "outline" | "black";
 } & Omit<P, "ref">) => {
   const buttonClass =
     {
-      primary: "bg-primary text-white",
-      black: "bg-black text-white",
-      outline: "bg-transparent text-black ring-black ring-1"
+      primary: "bg-primary text-white hover:bg-secondary",
+      outline: "bg-transparent text-black ring-black ring-1 hover:bg-black hover:text-white ",
+      black: "bg-black text-white hover:bg-transparent ring-black ring-1 hover:text-black",
     }[variant] +
-    " h-12 w-40 flex justify-center items-center font-bold text-[13px] uppercase " +
+    " h-12 w-40 flex justify-center items-center font-bold text-[13px] hover:transition-all uppercase ease-in duration-300" +
     className;
 
   return (

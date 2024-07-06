@@ -4,12 +4,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#101010]">
-      <div className="py-12 px-6">
-        <div className="mx-auto w-fit  my-12">
-          <Logo />
-        </div>
-        <ul className="grid gap-4 place-content-center text-white">
+    <footer className="bg-[#101010] w-full absolute bottom-0">
+      <div className="container py-12 ">
+        <div className="flex flex-col gap-12 pb-12 lg:pb-9 lg:flex-row items-center lg:justify-between">
+        <Logo className="mx-auto sm:mx-0 w-fit " />
+        <ul className="flex flex-col gap-4 sm:flex-row text-white">
           <Link className="text-center text-[13px] font-bold" href={"/"}>
             Home
           </Link>
@@ -23,21 +22,21 @@ export default function Footer() {
             Earphones
           </Link>
         </ul>
+        </div>
         <div>
           <div className="text-white/50 ">
-            <p className="text-center text-[15px] my-14">
+            <p className="text-center text-[15px]  sm:text-start lg:max-w-[540px]">
               Audiophile is an all in one stop to fulfill your audio needs.
-              We&apos;re a small team of music lovers and sound specialists who are
-              devoted to helping you get the most out of personal audio. Come
-              and visit our demo facility - we’re open 7 days a week.
+              We&apos;re a small team of music lovers and sound specialists who
+              are devoted to helping you get the most out of personal audio.
+              Come and visit our demo facility - we’re open 7 days a week.
             </p>
-            <div className="flex flex-col gap-14 justify-center">
+            <div className="flex flex-col gap-14 justify-center mt-12 sm:flex-row items-center lg:mt-14">
               <p className="text-center text-[15px] font-bold">
                 Copyright 2021. All Rights Reserved
               </p>
-              <div className="mx-auto">
-              <Icons />
-
+              <div className="mx-auto sm:mr-0 lg:relative lg:bottom-16">
+                <Icons />
               </div>
             </div>
           </div>

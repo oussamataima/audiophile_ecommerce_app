@@ -20,9 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.className}>
         <Nav />
-        <div className="h-[1px] bg-white opacity-10"></div>
+       
+        <main >
         {children}
         <Footer/>
+        </main>
         </body>
     </html>
   );
