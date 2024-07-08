@@ -4,11 +4,6 @@ export type Product = {
     name: string,
     image: string,
     category: string,
-    categoryImage: {
-      mobile: string,
-      tablet: string,
-      desktop: string
-    },
     isNew: boolean,
     price: number,
     description: string,

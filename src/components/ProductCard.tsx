@@ -42,19 +42,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
             New Product
           </span>
         )}
+        <Link href={`/${category}/${slug}`}>
         <h2
           className="text-[28px] sm:text-[40px] leading-snug font-bold uppercase tracking-[2px] text-center
     sm:max-w-[450px] sm:leading-[44px] xl:text-start "
         >
           {name}
         </h2>
-        <p className="text-[15px] leading-[25px] text-center  sm:m-auto xl:text-start pt-4 pb-6">
+        </Link>
+        
+        <p className="text-[15px] opacity-50 leading-[25px] text-center  sm:m-auto xl:text-start pt-4 pb-6">
           {description}
         </p>
         {!isPurshasePage && (
-          <Link href={`/${category}/${slug}`}>
-          <Button className="mx-auto xl:m-0">See Product</Button>
-          </Link>
+          <Button href={`/${category}/${slug}`} className="mx-auto xl:m-0">See Product</Button>
         )}
         {isPurshasePage && (
           <>

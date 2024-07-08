@@ -22,7 +22,7 @@ const Product3 = ({ className }: { className?: string }) => {
       <Image
         className="!relative !h-auto rounded-lg hidden lg:block lg:!w-[540px]"
         fill
-        src="/home/desktop/image-earphones-yx1.jpg"
+        src="/home/desktop/yx1.png"
         alt=""
         
       />
@@ -30,7 +30,7 @@ const Product3 = ({ className }: { className?: string }) => {
         <h3 className="text-[28px] font-bold uppercase tracking-[2px] mb-8">
           YX1 Earphones
         </h3>
-        <Button variant="outline">See Product</Button>
+        <Button href="/speakers/yx1-earphones" variant="outline">See Product</Button>
       </div>
     </section>
   );

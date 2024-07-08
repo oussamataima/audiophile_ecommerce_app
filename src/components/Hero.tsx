@@ -11,7 +11,7 @@ export default function Hero() {
         </div>
         <div className="flex flex-col gap-7 md:gap-10 items-center xl:items-start">
         <p className="text-[15px] leading-[25px] text-center xl:text-start text-white/75  max-w-[350px]">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-        <Button>See Product</Button>
+        <Button href="/headphones/xx99-mark-two-headphones">See Product</Button>
         </div>
       </div>
     </section>

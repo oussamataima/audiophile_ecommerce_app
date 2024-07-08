@@ -1,3 +1,4 @@
+import { cn } from "@/utils/lib";
 import Image from "next/image"
 
 type ProductImagesProps = {
@@ -11,7 +12,7 @@ type ProductImagesProps = {
 
 const ProductImages = ({gallery, className}: ProductImagesProps) => {
   return (
-    <section className={"container"}>
+    <section className={cn("container", className)}>
         <Image className="!relative md:hidden" fill src={gallery.mobile} alt="" />
         <Image className="!relative hidden md:block xl:hidden" fill src={gallery.tablet} alt="" />
         <Image className="!relative hidden xl:block" fill src={gallery.desktop} alt="" />

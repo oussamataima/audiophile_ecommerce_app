@@ -10,7 +10,7 @@ const Product2 = ({className } : {className? : string }) => {
 
     >
         <h3 className="text-[28px] font-bold uppercase tracking-[2px] mb-8">ZX7 Speaker</h3>
-        <Button variant="outline" >See Product</Button>
+        <Button href="/speakers/zx7-speaker" variant="outline" >See Product</Button>
     </div>
 
     </section>
