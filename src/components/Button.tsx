@@ -15,10 +15,10 @@ export const Button = <
   const buttonClass =
     {
       primary: "bg-primary text-white hover:bg-secondary",
-      outline: "bg-transparent text-black ring-black ring-1 hover:bg-black hover:text-white ",
+      outline: "bg-transparent text-black ring-black ring-1 hover:bg-black hover:text-white",
       black: "bg-black text-white hover:bg-transparent ring-black ring-1 hover:text-black",
     }[variant] +
-    " h-12 w-40 flex justify-center items-center font-bold text-[13px] hover:transition-all uppercase ease-in duration-300" +
+    " h-12 w-40 flex justify-center items-center font-bold text-[13px] tracking-[1px] hover:transition-all uppercase ease-in duration-300 " +
     className;
 
   return (

@@ -42,7 +42,7 @@ const NewProduct = ({className } : {className? : string }) => {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <Button className="w-fit mx-auto xl:m-0 xl:mt-2 " variant="black" onClick={() => {console.log("clicked")}} >See Product</Button>
+        <Button className=" mx-auto xl:m-0 xl:mt-2 " variant="black" onClick={() => {console.log("clicked")}} >See Product</Button>
       </div>
 
 
