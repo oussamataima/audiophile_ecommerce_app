@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import {  Manrope   } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Nav from "@/components/shared/Nav";
+import Footer from "@/components/shared/Footer";
+
 
 const manrope = Manrope({subsets: ["latin"] , display: "swap" });
 

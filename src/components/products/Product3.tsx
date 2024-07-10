@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "./Button";
+import { Button } from "../shared/Button";
 
 const Product3 = ({ className }: { className?: string }) => {
   return (

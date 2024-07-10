@@ -1,5 +1,6 @@
-import AboutUs from "@/components/AboutUs";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/products/ProductCard";
+import AboutUs from "@/components/shared/AboutUs";
+
 import { Product } from "@/types";
 
 const ProductsPage = ({ products }: { products: Product[] }) => {

@@ -17,4 +17,12 @@ export type Product = {
       quantity: number,
       item: string
     }[]
+    others: {
+      slug: string,
+      name: string,
+      image: {
+        mobile: string,
+        tablet: string,
+      }
+    }[]
   };

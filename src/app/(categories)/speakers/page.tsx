@@ -1,6 +1,6 @@
 import { getProductByCategory } from "@/actions/products";
-import ProductCard from "@/components/ProductCard";
-import { Product } from "@/types";
+
+
 import ProductsPage from "../-components/ProductsPage";
 
 
