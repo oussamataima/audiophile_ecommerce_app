@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 const Categories = ({ className }: { className?: string }) => {
-  console.log("categories component rendered")
   return (
     <section
       className={`container grid grid-cols-1  md:grid-cols-3 gap-[64px] md:gap-2.5 lg:gap-[30px] ${className}`}

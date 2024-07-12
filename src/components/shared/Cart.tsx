@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/utils/lib";
+import { cn, formatter } from "@/utils/lib";
 import { IterationCcw, Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
@@ -37,7 +37,7 @@ const Cart = () => {
 export default Cart;
 
 const CartContent = () => {
-  const {items , emptyCart} = useContext(CartShoppingContext)
+  const {items , emptyCart , totalPrice} = useContext(CartShoppingContext)
   return  (
     <div id="cart" className="bg-white p-8 px-7 md:p-8 rounded-lg  absolute right-10 top-[114px] min-w-[327px] md:min-w-[377px] z-50 overflow-auto max-h-[500px]">
       <div className="flex justify-between items-center">
@@ -53,14 +53,15 @@ const CartContent = () => {
         ))}
       </div>
       <div className="flex flex-col gap-6 mt-8">
-      <Total />
+      <Total total={totalPrice} />
       <Button className="w-full">Checkout</Button>
       </div>
     </div>
   );
 };
 
-const ProductItem = ({  name, price , image , quantity }: CartItem) => {
+const ProductItem = ({ id , name, price , image , quantity }: CartItem) => {
+  const {increaseQuantity , decreaseQuantity} = useContext(CartShoppingContext)
   
   return (
     <article className="flex gap-4">
@@ -69,15 +70,15 @@ const ProductItem = ({  name, price , image , quantity }: CartItem) => {
       </figure>
       <div className="flex flex-col justify-center">
         <h5 className="text-[15px] font-bold  leading-[25px]">{name.split(" ").slice(0,2).join(' ')}</h5>
-        <p className="opacity-50  text-sm font-bold  leading-[25px]">{price}</p>
+        <p className="opacity-50  text-sm font-bold  leading-[25px]">$ {formatter(price)}</p>
       </div>
       <div className="flex justify-around items-center ml-auto bg-[#f1f1f1] w-24 h-8 self-center">
-        <button className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
+        <button onClick={()=> decreaseQuantity(id)} className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
           <Minus size={10} strokeWidth={3} />
         </button>
         <span className="text-[13px] font-bold  tracking-[1px]">{quantity}</span>
-        <button className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
-          <Plus size={10} strokeWidth={3} />
+        <button onClick={()=> increaseQuantity(id) } className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
+          <Plus  size={10} strokeWidth={3} />
         </button>
       </div>
     </article>
@@ -104,13 +105,13 @@ const PanierIcon = ({ className }: { className?: string }) => {
   );
 };
 
-const Total = ({ className }: { className?: string }) => {
+const Total = ({ className , total }: { className?: string , total : number }) => {
   return (
     <div className={cn("flex justify-between items-center", className)}>
       <div className=" opacity-50 text-[15px] font-normal leading-[25px]">
         TOTAL
       </div>
-      <div className="  text-center text-lg font-bold uppercase">$ 5,396</div>
+      <div className="  text-center text-lg font-bold uppercase">$ {formatter(total)}</div>
     </div>
   );
 };
