@@ -1,15 +1,15 @@
 "use client";
 import { cn } from "@/utils/lib";
-import { Minus, Plus } from "lucide-react";
+import { IterationCcw, Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
-import {CartShoppingContext} from "@/context/cart"
+import {CartShoppingContext} from "@/context/cartProvider"
 import { useContext } from "react";
+import { CartItem } from "@/types";
+import Image from "next/image";
 const Cart = () => {
-  const cartManager = useContext(CartShoppingContext)
   const [showCart, setShowCart] = useState(false);
-  const {items} = cartManager
-  console.log(items)
+  
   useEffect(() => {
     if (showCart) {
       document.body.setAttribute('data-modal-open', 'true')
@@ -37,18 +37,20 @@ const Cart = () => {
 export default Cart;
 
 const CartContent = () => {
+  const {items , emptyCart} = useContext(CartShoppingContext)
   return  (
-    <div id="cart" className="bg-white p-8 px-7 md:p-8 rounded-lg absolute right-10 top-[114px] min-w-[327px] md:min-w-[377px] z-50">
+    <div id="cart" className="bg-white p-8 px-7 md:p-8 rounded-lg  absolute right-10 top-[114px] min-w-[327px] md:min-w-[377px] z-50 overflow-auto max-h-[500px]">
       <div className="flex justify-between items-center">
-        <h4 className="text-lg font-bold uppercase tracking-wider">Cart (3)</h4>
-        <button className="underline text-[15px] line-height-[25px] opacity-50 hover:text-primary hover:cursor-pointer ">
+        <h4 className="text-lg font-bold uppercase tracking-wider">Cart {items.length}</h4>
+        <button onClick={()=> emptyCart()} className="underline text-[15px] line-height-[25px] opacity-50 hover:text-primary hover:cursor-pointer ">
           Remove all
         </button>
       </div>
       <div className="flex flex-col gap-6 my-8">
-        <ProductItem name="XX99 MK II" price="$2,999" />
-        <ProductItem name="XX99 MK II" price="$2,999" />
-        <ProductItem name="XX99 MK II" price="$2,999" />
+        {items.map((item)=>(
+          <ProductItem key={item.id} {...item} />
+
+        ))}
       </div>
       <div className="flex flex-col gap-6 mt-8">
       <Total />
@@ -58,19 +60,22 @@ const CartContent = () => {
   );
 };
 
-const ProductItem = ({ name, price }: { name: string; price: string }) => {
+const ProductItem = ({  name, price , image , quantity }: CartItem) => {
+  
   return (
     <article className="flex gap-4">
-      <figure className="w-16 h-16 bg-zinc-100 rounded-lg"></figure>
+      <figure className="w-16 h-16 bg-zinc-100 rounded-lg flex justify-center items-center">
+        <Image className="!relative !w-[50%] !h-auto" src={image} alt={name} fill/>
+      </figure>
       <div className="flex flex-col justify-center">
-        <h5 className="text-[15px] font-bold  leading-[25px]">{name}</h5>
+        <h5 className="text-[15px] font-bold  leading-[25px]">{name.split(" ").slice(0,2).join(' ')}</h5>
         <p className="opacity-50  text-sm font-bold  leading-[25px]">{price}</p>
       </div>
       <div className="flex justify-around items-center ml-auto bg-[#f1f1f1] w-24 h-8 self-center">
         <button className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
           <Minus size={10} strokeWidth={3} />
         </button>
-        <span className="text-[13px] font-bold  tracking-[1px]">10</span>
+        <span className="text-[13px] font-bold  tracking-[1px]">{quantity}</span>
         <button className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
           <Plus size={10} strokeWidth={3} />
         </button>

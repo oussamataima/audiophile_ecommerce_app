@@ -2,8 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Image from "next/image";
-import { CartShoppingContext } from "@/context/cart";
-import { useContext, useState } from "react";
+import { CartShoppingContext } from "@/context/cartProvider";
+import { useContext, useEffect, useState } from "react";
 
 type ProductCardProps = {
   id : number;
@@ -33,9 +33,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   slug,
   category,
 }) => {
-  const { addItem, items } = useContext(CartShoppingContext);
+  const { addItem, items , increaseQuantity , decreaseQuantity } = useContext(CartShoppingContext);
   const item = items.find((i) => i.id === id);
-  const [quantity, setQuantity] = useState(item?.quantity | 1);
+  const [quantity, setQuantity] = useState(item ? item.quantity : 1);
   
 
   return (
@@ -81,16 +81,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   className="text-black/20 hover:cursor-pointer hover:text-primary duration-300"
                   size={16}
                   strokeWidth={3}
-                  onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+                  onClick={() => item ? decreaseQuantity(id) : quantity > 1 && setQuantity(quantity - 1)}
                 />
                 <span className="text-[16px] font-bold  tracking-[1px]">
-                  {quantity}
+                  { item ? item.quantity : quantity}
                 </span>
                 <Plus
                   className="text-black/20 hover:cursor-pointer hover:text-primary duration-300"
                   size={16}
                   strokeWidth={3}
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => item ? increaseQuantity(id) : setQuantity(quantity + 1)}
                 />
               </div>
               <Button disabled={items.some((item) => item.id === id)} onClick={() => addItem({ id, name, price , image , quantity })} className="mx-auto xl:m-0">add to cart</Button>

@@ -27,10 +27,10 @@ export type Product = {
     }[]
   };
 
-export interface CartItem {
-  id: number;
-  quantity: number;
-  name: string;
-  price: number;
-  image: string;
-}
+ export type CartItem = {
+    id: number;
+    name: string;
+    price: number;
+    image: string ;
+    quantity: number;
+  };

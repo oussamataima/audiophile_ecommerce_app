@@ -3,7 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/shared/Nav";
 import Footer from "@/components/shared/Footer";
-import { CartShoppingProvider } from "@/context/cart";
+import { CartShoppingProvider } from "@/context/cartProvider";
 
 const manrope = Manrope({ subsets: ["latin"], display: "swap" });
 
