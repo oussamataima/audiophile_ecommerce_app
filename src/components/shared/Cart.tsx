@@ -65,8 +65,8 @@ const ProductItem = ({ id , name, price , image , quantity }: CartItem) => {
   
   return (
     <article className="flex gap-4">
-      <figure className="w-16 h-16 bg-zinc-100 rounded-lg flex justify-center items-center">
-        <Image className="!relative !w-[50%] !h-auto" src={image} alt={name} fill/>
+      <figure className="w-16 h-16 bg-zinc-100 rounded-lg flex justify-center items-center relative">
+        <Image sizes="40" className="!relative !w-[50%] !h-auto" src={image} alt={name} fill/>
       </figure>
       <div className="flex flex-col justify-center">
         <h5 className="text-[15px] font-bold  leading-[25px]">{name.split(" ").slice(0,2).join(' ')}</h5>

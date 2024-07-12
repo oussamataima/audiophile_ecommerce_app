@@ -12,10 +12,10 @@ type ProductImagesProps = {
 
 const ProductImages = ({gallery, className}: ProductImagesProps) => {
   return (
-    <section className={cn("container", className)}>
-        <Image className="!relative md:hidden" fill src={gallery.mobile} alt="" />
-        <Image className="!relative hidden md:block xl:hidden" fill src={gallery.tablet} alt="" />
-        <Image className="!relative hidden xl:block" fill src={gallery.desktop} alt="" />
+    <section className={cn("container relative", className)}>
+        <Image priority className="!relative md:hidden" sizes="500" fill src={gallery.mobile} alt="" />
+        <Image priority className="!relative hidden md:block xl:hidden" sizes="500" fill src={gallery.tablet} alt="" />
+        <Image priority className="!relative hidden xl:block" sizes="500" fill src={gallery.desktop} alt="" />
     </section>
   )
 }

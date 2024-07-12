@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <article className="container flex flex-col xl:flex-row justify-between gap-8 md:gap-12 xl:gap-0">
-      <div className="bg-[#f1f1f1] w-full xl:w-[540px] h-[327px]  md:h-[352px] xl:h-[560px] grid place-items-center rounded-lg ">
+      <div className="bg-[#f1f1f1] w-full xl:w-[540px] h-[327px]  md:h-[352px] xl:h-[560px] grid place-items-center rounded-lg relative">
         <img
           className="max-w-48 xl:max-w-[400px]"
           src={image}
