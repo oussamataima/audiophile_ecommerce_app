@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { CartShoppingContext } from "@/context/cartProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 type ProductCardProps = {
   id : number;
@@ -41,10 +41,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <article className="container flex flex-col xl:flex-row justify-between gap-8 md:gap-12 xl:gap-0">
       <div className="bg-[#f1f1f1] w-full xl:w-[540px] h-[327px]  md:h-[352px] xl:h-[560px] grid place-items-center rounded-lg relative">
-        <img
-          className="max-w-48 xl:max-w-[400px]"
+        <Image
+          className="max-w-48 xl:max-w-[400px] !h-auto !relative"
+          sizes="400"
           src={image}
           alt="product image"
+          priority
+          fill
+      
         />
       </div>
       <div className="max-w-[445px] self-center flex flex-col gap-4 ">

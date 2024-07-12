@@ -2,18 +2,22 @@ import { cn } from "@/utils/lib";
 import Image from "next/image";
 
 const AboutUs = ({className}: {className?: string}) => (
-    <section className={cn("container flex flex-col gap-10 sm:gap-16 xl:gap-0 xl:flex-row-reverse xl:justify-between ", className)}>
+    <section className={cn("container flex flex-col gap-10 sm:gap-16 xl:gap-0 xl:flex-row-reverse xl:justify-between relative", className)}>
       <Image
         src="/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg"
         alt="about us image"
         fill
         className="!relative mx-auto rounded-lg sm:hidden"
+        priority
+        sizes="500"
       />
       <Image
         src="/product-xx99-mark-two-headphones/tablet/image-gallery-1.jpg"
         alt="about us image"
         fill
         className="!relative mx-auto rounded-xl hidden sm:block xl:hidden"
+        priority
+        sizes="500"
       />
       <div
         style={{

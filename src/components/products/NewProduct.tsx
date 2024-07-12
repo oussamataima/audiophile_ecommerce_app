@@ -12,14 +12,14 @@ const NewProduct = ({className } : {className? : string }) => {
       <Image
         src="/home/mobile/image-speaker-zx9.png"
         alt="new product"
-        className="mx-auto md:hidden"
+        className="mx-auto md:hidden w-auto h-auto"
         width={172}
         height={207}
       />
       <Image
         src="/home/tablet/image-speaker-zx9.png"
         alt="new product"
-        className="mx-auto hidden md:block lg:hidden"
+        className="mx-auto hidden md:block lg:hidden w-auto h-auto"
 
         width={197}
         height={237}
@@ -27,8 +27,7 @@ const NewProduct = ({className } : {className? : string }) => {
       <Image
         src="/home/desktop/image-speaker-zx9.png"
         alt="new product"
-        className="mx-auto hidden lg:block"
-
+        className="mx-auto hidden lg:block w-auto h-auto"
         width={410}
         height={493}
       />
@@ -38,7 +37,7 @@ const NewProduct = ({className } : {className? : string }) => {
 
       </div>
       <div className="flex flex-col gap-6 pb-14 xl:w-fit xl:max-w-[349px] xl:absolute xl:right-24 xl:bottom-[124px] xl:p-0">
-        <h2 className="text-4xl md:text-[56px] leading-[58px] font-bold max-w-min  mx-auto text-center uppercase xl:text-start xl:m-0 ">ZSX Speaker</h2>
+        <h2 className="text-4xl md:text-[56px] leading-[58px] font-bold max-w-min  mx-auto text-center uppercase xl:text-start xl:m-0 ">ZX9 Speaker</h2>
         <p className="text-[15px] text-white/75 text-center leading-6 mx-auto max-w-[280px] md:max-w-[350px] xl:text-start xl:m-0">
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
