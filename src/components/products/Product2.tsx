@@ -1,10 +1,11 @@
 // import React from "react"
 
-import { Button } from "./Button"
+import { Button } from "../shared/Button"
+
 
 const Product2 = ({className } : {className? : string }) => {
   return (
-    <section className={`container ${className}`}>
+    <section className={`${className}`}>
     <div
          className="bg_new_product rounded-lg py-24 pl-5 sm:pl-12 xl:pl-24 "
 

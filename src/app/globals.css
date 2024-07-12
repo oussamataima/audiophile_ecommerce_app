@@ -99,3 +99,7 @@
     flex-direction: row-reverse;
   }
 }
+/* 
+[data-modal-open="true"] > *:not(#cart) {
+  filter: blur(2px);
+} */

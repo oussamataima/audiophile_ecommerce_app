@@ -22,3 +22,4 @@ export async function getProductBySlug(slug: string) {
             .find((product: Product) => product.slug === slug.toLocaleLowerCase()));
     return products
 }
+

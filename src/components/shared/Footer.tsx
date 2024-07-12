@@ -1,8 +1,10 @@
 import React from "react";
-import Logo from "./Logo";
+
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
+  console.log("footer component rendered");
   return (
     <footer className="bg-[#101010] ">
       <div className="container py-12 ">
