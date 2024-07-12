@@ -32,7 +32,7 @@ const CartShoppingProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   // Function to get items from local storage
   const getItemsFromLocalStorage = useCallback(() => {
-    const storedItems = localStorage.getItem("cartItems");
+const storedItems = typeof window !== 'undefined' ? localStorage.getItem("cartItems") : null;
     if (storedItems) {
       return JSON.parse(storedItems);
     }
@@ -77,7 +77,7 @@ const CartShoppingProvider: React.FC<{ children: React.ReactNode }> = ({
   // Function to empty the cart
   const emptyCart = () => {
     setItems([])
-    localStorage.removeItem('cartItems')
+    localStorage.removeItem('myKey')
   }
 
   // Function to increase the quantity of an item in the cart
