@@ -1,10 +1,13 @@
 "use server";
 
 import { Product } from "@/types";
+import { headers } from "next/headers";
+import { NextRequest } from "next/server";
 
 const url = process.env.url
 export async function getProducts() {
     const products = await fetch(`${url}/data.json`, { cache: 'no-store' }).then((res) => res.json())
+
     return products
 }
 export async function getProductByCategory(category: string) {
