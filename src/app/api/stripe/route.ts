@@ -30,7 +30,6 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ session_id: session.id, url: session.url });
   } catch (err: any) {
-    console.error(err);
     return NextResponse.json({ statusCode: 500, message: err.message });
   }
 }

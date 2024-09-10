@@ -9,7 +9,6 @@ const ConfirmOrder = () => {
   const [open, setOpen] = useState(true);
   const [showAll, setShowAll] = useState(false);
   const { items, totalPrice } = useContext(CartShoppingContext);
-  console.log(items);
   const firstItem = items[0];
 
   if (!open) return null;

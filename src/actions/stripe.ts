@@ -13,7 +13,6 @@ export async function Checkout(data: CartItem[]) {
     }).then((res) => res.json());
       const { url } = res;
       window.open(url, "_self");
-      console.log(url)
   } catch (error) {
     throw error;
   }
