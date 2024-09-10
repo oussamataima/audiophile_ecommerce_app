@@ -11,3 +11,6 @@ export const formatter = (num: number) =>
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
+
+
+

@@ -60,6 +60,7 @@ const storedItems = typeof window !== 'undefined' ? localStorage.getItem("cartIt
       // Add the item to the cart and update the local storage
       setItems((prevItems) => [...prevItems, item]);
       saveItemsToLocalStorage([...items, item]);
+
     },
     [items, saveItemsToLocalStorage]
   );
@@ -134,7 +135,7 @@ const storedItems = typeof window !== 'undefined' ? localStorage.getItem("cartIt
       totalPrice,
     }),
     // Memoize the manager object to avoid unnecessary re-renders
-    [items, addItem, removeItem, increaseQuantity, decreaseQuantity, totalPrice]
+    [items, addItem, removeItem, increaseQuantity, decreaseQuantity, totalPrice  ]
   );
 
   // Return the provider with the manager object

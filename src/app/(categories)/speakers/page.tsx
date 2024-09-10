@@ -1,6 +1,5 @@
 import { getProductByCategory } from "@/actions/products";
 
-
 import ProductsPage from "../-components/ProductsPage";
 
 
@@ -10,6 +9,7 @@ export default async function page() {
     return (
         <>
            <ProductsPage products={products} />
+
         </>
     )
 }

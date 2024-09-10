@@ -3,11 +3,13 @@ import Categories from "@/components/shared/Categories";
 
 
 
+
 import Image from "next/image";
 import Product2 from "@/components/products/Product2";
 import Product3 from "@/components/products/Product3";
 import NewProduct from "@/components/products/NewProduct";
 import { Button } from "@/components/shared/Button";
+import ConfirmOrder from "@/components/products/ConfirmOrder";
 
 export default function Home() {
   return (
@@ -19,6 +21,9 @@ export default function Home() {
       <Product2 className="container mt-6 sm:mt-8 xl:mt-12" />
       <Product3 className="container mt-6 sm:mt-8 xl:mt-12" />
       <AboutUs className="my-20 sm:my-24 " />
+
+
+
     </>
   );
 }
@@ -41,3 +46,4 @@ function Hero() {
     </section>
   );
 }
+

@@ -1,31 +1,34 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { motion } from "framer-motion";
 
 const Categories = ({ className }: { className?: string }) => {
+
   return (
     <section
       className={`container grid grid-cols-1  md:grid-cols-3 gap-[64px] md:gap-2.5 lg:gap-[30px] ${className}`}
     >
-      <div
+      <motion.div
         id="cat1"
         className="bg-[#f1f1f1] rounded-lg h-[165px] lg:h-[204px] relative "
+
       >
         <div className="mx-auto flex flex-col gap-4 top-[88px] lg:top-[116px] relative  ">
           <h2 className="font-bold text-[15px] md:text-[18px] uppercase tracking-wide text-center">
             Headphones
           </h2>
           <Link
-            className="flex gap-3 items-center mx-auto w-fit "
+            className="flex gap-3 items-center mx-auto w-fit group"
             href={"/headphones "}
           >
-            <span className="text-[13px] font-bold uppercase text-black-500 hover:text-primary">
+            <span className="text-[13px] font-bold uppercase text-black-500 group-hover:text-primary">
               Shop
             </span>
             <ArrowRightIcon />
           </Link>
         </div>
-      </div>
+      </motion.div>
       <div
         id="cat2"
         className="bg-[#f1f1f1] rounded-lg h-[165px] lg:h-[204px] relative"
@@ -35,10 +38,10 @@ const Categories = ({ className }: { className?: string }) => {
             Speakers
           </h2>
           <Link
-            className="flex gap-3 items-center mx-auto w-fit "
+            className="flex gap-3 items-center mx-auto w-fit group"
             href={"/speakers"}
           >
-            <span className="text-[13px] font-bold uppercase text-black-500 hover:text-primary">
+            <span className="text-[13px] font-bold uppercase text-black-500 group-hover:text-primary">
               Shop
             </span>
             <ArrowRightIcon />
@@ -55,10 +58,10 @@ const Categories = ({ className }: { className?: string }) => {
             Earphones
           </h2>
           <Link
-            className="flex gap-3 items-center mx-auto w-fit "
+            className="flex gap-3 items-center mx-auto w-fit group"
             href={"/earphones"}
           >
-            <span className="text-[13px] font-bold uppercase text-black-500 hover:text-primary">
+            <span className="text-[13px] font-bold uppercase text-black-500 group-hover:text-primary">
               Shop
             </span>
             <ArrowRightIcon />

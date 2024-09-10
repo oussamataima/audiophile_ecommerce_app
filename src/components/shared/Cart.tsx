@@ -1,91 +1,138 @@
 "use client";
 import { cn, formatter } from "@/utils/lib";
-import { IterationCcw, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
-import {CartShoppingContext} from "@/context/cartProvider"
+import { CartShoppingContext } from "@/context/cartProvider";
 import { useContext } from "react";
 import { CartItem } from "@/types";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Checkout } from "@/actions/stripe";
+import ConfirmOrder from "../products/ConfirmOrder";
+import { useSearchParams } from 'next/navigation'
+import CancelOrder from "../products/CancelOrder";
+
+
 const Cart = () => {
   const [showCart, setShowCart] = useState(false);
-  
+  const searchParams = useSearchParams()
+  const success = searchParams.get('success')
+  const canceled = searchParams.get('canceled')
+
   useEffect(() => {
     if (showCart) {
-      document.body.setAttribute('data-modal-open', 'true')
+      document.body.setAttribute("data-modal-open", "true");
     } else {
-        document.body.removeAttribute('data-modal-open');
+      document.body.removeAttribute("data-modal-open");
     }
-  },[showCart])
+  }, [showCart]);
   return (
     <>
+    {canceled === "true" && <CancelOrder />}
+    {success === "true" && <ConfirmOrder />}
       <button
+        id="cart_icon"
+        className="relative"
         onClick={() => {
           setShowCart(!showCart);
         }}
       >
-        {
-          showCart && <Overlay onClick={() => setShowCart(!showCart)}/>
-        }
+        {showCart && <Overlay onClick={() => setShowCart(!showCart)} />}
         <PanierIcon />
       </button>
-      {showCart && <CartContent />}
+      <AnimatePresence>{showCart && <CartContent />}</AnimatePresence>
     </>
   );
 };
 
 export default Cart;
 
+
+
 const CartContent = () => {
-  const {items , emptyCart , totalPrice} = useContext(CartShoppingContext)
-  return  (
-    <div id="cart" className="bg-white p-8 px-7 md:p-8 rounded-lg  absolute right-10 top-[114px] min-w-[327px] md:min-w-[377px] z-50 overflow-auto max-h-[500px]">
-      <div className="flex justify-between items-center">
-        <h4 className="text-lg font-bold uppercase tracking-wider">Cart {items.length}</h4>
-        <button onClick={()=> emptyCart()} className="underline text-[15px] line-height-[25px] opacity-50 hover:text-primary hover:cursor-pointer ">
+  const { items, emptyCart, totalPrice } = useContext(CartShoppingContext);
+  
+
+  return (
+    <motion.div  
+      id="cart"
+      className="bg-white p-8 px-7 md:p-8 rounded-lg  absolute right-10 top-[114px] min-w-[327px] md:min-w-[377px] z-50 max-h-[500px]"
+      initial={{  opacity:0 }}
+      animate={{   opacity:1 }}
+      transition={{duration:0.3,}}
+  
+      exit={{ opacity:0.5 }}
+    >
+      <div  className="flex justify-between items-center">
+        <h4 className="text-lg font-bold uppercase tracking-wider">
+          Cart {items.length}
+        </h4>
+        <button
+          onClick={() => emptyCart()}
+          className="underline text-[15px] line-height-[25px] opacity-50 hover:text-primary hover:cursor-pointer "
+        >
           Remove all
         </button>
       </div>
       <div className="flex flex-col gap-6 my-8">
-        {items.map((item)=>(
+        {items.map((item) => (
           <ProductItem key={item.id} {...item} />
-
         ))}
       </div>
       <div className="flex flex-col gap-6 mt-8">
-      <Total total={totalPrice} />
-      <Button className="w-full">Checkout</Button>
+        <Total total={totalPrice} />
+        <Button onClick={() => Checkout(items)} className="w-full" >{"Checkout"}</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-const ProductItem = ({ id , name, price , image , quantity }: CartItem) => {
-  const {increaseQuantity , decreaseQuantity} = useContext(CartShoppingContext)
-  
+const ProductItem = ({ id, name, price, image, quantity }: CartItem) => {
+  const { increaseQuantity, decreaseQuantity } =
+    useContext(CartShoppingContext);
+
   return (
     <article className="flex gap-4">
       <figure className="w-16 h-16 bg-zinc-100 rounded-lg flex justify-center items-center relative">
-        <Image sizes="40" className="!relative !w-[50%] !h-auto" src={image} alt={name} fill/>
+        <Image
+          sizes="40"
+          className="!relative !w-[50%] !h-auto"
+          src={image}
+          alt={name}
+          fill
+        />
       </figure>
       <div className="flex flex-col justify-center">
-        <h5 className="text-[15px] font-bold  leading-[25px]">{name.split(" ").slice(0,2).join(' ')}</h5>
-        <p className="opacity-50  text-sm font-bold  leading-[25px]">$ {formatter(price)}</p>
+        <h5 className="text-[15px] font-bold  leading-[25px]">
+          {name.split(" ").slice(0, 2).join(" ")}
+        </h5>
+        <p className="opacity-50  text-sm font-bold  leading-[25px]">
+          $ {formatter(price)}
+        </p>
       </div>
       <div className="flex justify-around items-center ml-auto bg-[#f1f1f1] w-24 h-8 self-center">
-        <button onClick={()=> decreaseQuantity(id)} className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
+        <button
+          onClick={() => decreaseQuantity(id)}
+          className="text-black/20 hover:cursor-pointer hover:text-primary duration-300"
+        >
           <Minus size={10} strokeWidth={3} />
         </button>
-        <span className="text-[13px] font-bold  tracking-[1px]">{quantity}</span>
-        <button onClick={()=> increaseQuantity(id) } className="text-black/20 hover:cursor-pointer hover:text-primary duration-300">
-          <Plus  size={10} strokeWidth={3} />
+        <span className="text-[13px] font-bold  tracking-[1px]">
+          {quantity}
+        </span>
+        <button
+          onClick={() => increaseQuantity(id)}
+          className="text-black/20 hover:cursor-pointer hover:text-primary duration-300"
+        >
+          <Plus size={10} strokeWidth={3} />
         </button>
       </div>
     </article>
   );
 };
 
-const PanierIcon = ({ className }: { className?: string }) => {
+const PanierIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +140,6 @@ const PanierIcon = ({ className }: { className?: string }) => {
       height="20"
       viewBox="0 0 23 20"
       fill="none"
-      className={className}
     >
       <path
         fillRule="evenodd"
@@ -105,18 +151,20 @@ const PanierIcon = ({ className }: { className?: string }) => {
   );
 };
 
-const Total = ({ className , total }: { className?: string , total : number }) => {
+const Total = ({ className, total }: { className?: string; total: number }) => {
   return (
     <div className={cn("flex justify-between items-center", className)}>
       <div className=" opacity-50 text-[15px] font-normal leading-[25px]">
         TOTAL
       </div>
-      <div className="  text-center text-lg font-bold uppercase">$ {formatter(total)}</div>
+      <div className="  text-center text-lg font-bold uppercase">
+        $ {formatter(total)}
+      </div>
     </div>
   );
 };
 
-const Overlay = ({onClick}:any) => {
+const Overlay = ({ onClick }: any) => {
   return (
     <div
       id="overlay"
