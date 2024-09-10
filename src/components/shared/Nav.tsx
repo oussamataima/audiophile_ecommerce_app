@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
@@ -20,7 +21,9 @@ export default function Nav() {
           <NavLink href={"/earphones"}>Earphones</NavLink>
         </div>
         <div className="md:ml-auto">
-          <Cart />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+          </Suspense>
         </div>
       </div>
       <svg

@@ -15,6 +15,7 @@ import CancelOrder from "../products/CancelOrder";
 
 
 const Cart = () => {
+  
   const [showCart, setShowCart] = useState(false);
   const searchParams = useSearchParams()
   const success = searchParams.get('success')

@@ -32,7 +32,7 @@ const ConfirmOrder = () => {
           <path
             d="M20.7539 33.3328L27.5054 40.0843L43.3085 24.2812"
             stroke="white"
-            stroke-width="4"
+            strokeWidth="4"
           />
         </svg>
         

@@ -23,8 +23,8 @@ const CancelOrder = () => {
               fill="none"
             >
               <circle cx="32" cy="32" r="32" fill="#E53E3E" />
-              <path d="M20 20L44 44" stroke="white" stroke-width="4" />
-              <path d="M44 20L20 44" stroke="white" stroke-width="4" />
+              <path d="M20 20L44 44" stroke="white" strokeWidth="4" />
+              <path d="M44 20L20 44" stroke="white" strokeWidth="4" />
             </svg>
 
             <div className="space-y-4">
